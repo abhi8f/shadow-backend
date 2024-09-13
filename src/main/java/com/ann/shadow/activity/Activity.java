@@ -1,29 +1,39 @@
 package com.ann.shadow.activity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Entity
 public class Activity {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String activityName;
+    private String description;
+    private String location;
+    private List<String> tags;
+    private List<String> toolsUsed;
+    private String relatedProject;
+
+    private String category;
+    private int priorityLevel;
+
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private Duration duration;
-    private String category;
-    private int priorityLevel;
-    private String location;
+    private Duration breakDuration;
+
     private int moodRating;
-    private String description;
     private int interruptionCount;
     private boolean taskCompletionStatus;
-    private List<String> tags;
     private int energyLevel;
-    private List<String> collaborators;
     private String reflection;
-    private String relatedProject;
-    private Duration breakDuration;
-    private List<String> toolsUsed;
     private String outcome;
 
     // Constructor
@@ -46,7 +56,6 @@ public class Activity {
         this.taskCompletionStatus = taskCompletionStatus;
         this.tags = tags;
         this.energyLevel = energyLevel;
-        this.collaborators = collaborators;
         this.reflection = reflection;
         this.relatedProject = relatedProject;
         this.breakDuration = breakDuration;
@@ -56,6 +65,11 @@ public class Activity {
 
     public Activity() {
     }
+
+    public Activity(String activityName) {
+        this.activityName=activityName;
+    }
+
     // Method to print activity details
     @Override
     public String toString() {
@@ -73,7 +87,6 @@ public class Activity {
                 ", taskCompletionStatus=" + taskCompletionStatus +
                 ", tags=" + tags +
                 ", energyLevel=" + energyLevel +
-                ", collaborators=" + collaborators +
                 ", reflection='" + reflection + '\'' +
                 ", relatedProject='" + relatedProject + '\'' +
                 ", breakDuration=" + breakDuration +
@@ -183,14 +196,6 @@ public class Activity {
 
     public void setEnergyLevel(int energyLevel) {
         this.energyLevel = energyLevel;
-    }
-
-    public List<String> getCollaborators() {
-        return collaborators;
-    }
-
-    public void setCollaborators(List<String> collaborators) {
-        this.collaborators = collaborators;
     }
 
     public String getReflection() {
