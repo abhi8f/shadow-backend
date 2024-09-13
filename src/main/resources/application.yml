@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: shadow
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shadowdb
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 7227
+
+  jpa:
+    hibernate:
+      ddl-auto: update
